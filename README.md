@@ -39,7 +39,7 @@ What this wrapper does it basically making GET requests according to our needs u
 ### #1 CREATE A DEVICE INSTANCE with a DEVICE ID
  hint: used when you already know what device you want your data from 
 
-Got to ThingsBoard dashboard and choose a Device. Then, create a device object using its ID:
+Go to ThingsBoard dashboard and choose a Device. Then, create a device object using its ID:
 
 ```
 deviceOne = startDeviceInstance('INPUT_DEVICE_ID_HERE')
@@ -57,11 +57,11 @@ print deviceOne.getDataValue('accelarationX')
 Or an aggregation of values for a specific datetime interval:
 
 ```
-key  = 'temperature'
+key = 'temperature'
 fromDateTime = '2017-12-18,11:26'
-toDateTime	 = '2017-12-18,12:30'
+toDateTime = '2017-12-18,12:30'
 agg = 'AVG'
-print  deviceOne.getDataValuesInterval(key,fromDateTime,toDateTime,agg)
+print deviceOne.getDataValuesInterval(key,fromDateTime,toDateTime,agg)
 ```
 
 ### #2 CREATE INSTANCES FOR ALL DEVICES
@@ -93,7 +93,7 @@ print searchDataIntervalForKey(deviceList,'temperature','2017-12-18,11:26',\
 	'2017-12-18,12:30','AVG')
 ```
 
-Note: We assume that each datakey is unique accross all different Devices and the that the time format is respected.
+Note: We assume that each datakey is unique accross all different Devices and the that the datetime format is respected.
 
 
 Pushing data to thingsboard can be achieved by:
