@@ -12,12 +12,12 @@ import random
 # CREATE A DEVICE INSTANCE with a DEVICE ID 								#						
 # hint: used when you already know what device you want your data from      #
 #---------------------------------------------------------------------------#
-deviceOne = startDeviceInstance('b0e9fff0-e0b4-11e7-a701-1d8d2edf4f93')
+deviceOne = startDeviceInstance('YOUR_DEVICE_ID_HERE')
 #----------------------------------------------------------------------------
 print deviceOne																#
 print deviceOne.getDataAttributes()											#
 print deviceOne.getDataKeys()												#
-print deviceOne.getDataValue('accelarationX')								#
+print deviceOne.getDataValue('YOUR_DATA_KEY_HERE')							#
 #---------------------------------------------------------------------------#
 # Get values for a specific interval  										#
 #---------------------------------------------------------------------------#

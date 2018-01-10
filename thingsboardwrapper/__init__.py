@@ -14,16 +14,9 @@
 import os
 import requests
 
-#USERNAME = 'tenant@thingsboard.org' 
-#PASSWORD = 'tenant'
-#BASE_URL = 'http://130.192.85.32:8080'
-
-USERNAME = 'tmluna@isq.pt' 
-PASSWORD = 'isq2018'
-BASE_URL = 'https://demo.thingsboard.io'
-
-#USERNAME = 'mariojfonseca.duarte@gmail.com' 
-#PASSWORD = 'tenant'
+USERNAME = 'USER_NAME_HERE' 
+PASSWORD = 'PASSWORD_HERE'
+BASE_URL = 'BASE_URL_HERE'
 #BASE_URL = 'https://demo.thingsboard.io'
  
 headers = {'Content-Type': 'application/json','Accept': 'application/json'}
