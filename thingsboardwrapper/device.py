@@ -10,21 +10,34 @@ class DEVICE(object):
 		self.session = session
 		self.entityType = 'DEVICE'
 		self.base_url = base_url
+
+		url_path = base_url + '/api/device/{}'.format(id)
+		responseName = session.get(url_path, params = {'limit':'100'})
+		self.name = responseName.json()['name']
+		try:
+			self.description = responseName.json()['additionalInfo']['description']
+		except:
+			self.description = ""
+
 		url_path = base_url + '/api/device/{}/credentials'.format(id)
 		responseToken = session.get(url_path, params = {'limit':'100'})
 		self.token = responseToken.json()['credentialsId']
-		self.attributes = {}
-		url_path = base_url + '/api/plugins/telemetry/{}/{}/keys/timeseries'.format(self.entityType,self.id)
-		responseKeys = session.get(url_path, params = {'limit':'100'})
-		self.dataKeys = responseKeys.json()
-	
-	def getDataAttributes(self):
+		
 		url_path = self.base_url + '/api/v1/{}/attributes'.format(self.token)
 		response = self.session.get(url_path, params = {'limit':'100'})
 		try:
 			self.attributes = response.json()
 		except:
-			pass
+			self.attributes = ""
+		
+		url_path = base_url + '/api/plugins/telemetry/{}/{}/keys/timeseries'.format(self.entityType,self.id)
+		responseKeys = session.get(url_path, params = {'limit':'100'})
+		self.dataKeys = responseKeys.json()
+	
+
+	# 
+	# Methods
+	#
 
 	def getDataKeys(self):
 		url_path = self.base_url + '/api/plugins/telemetry/{}/{}/keys/timeseries'.format(self.entityType,self.id)
@@ -32,10 +45,19 @@ class DEVICE(object):
 		self.dataKeys = response.json()
 		return response.json()
 
+	def getAttributeValue(self,keys):
+		url_path = self.base_url + '/api/plugins/telemetry/{}/{}/values/attributes'.format(self.entityType,self.id)
+		try:
+			response = self.session.get(url_path, params = {'keys':keys})
+			return response.json()[0]['value']
+		except:
+			pass
+
 	def getDataValue(self,keys):
 		url_path = self.base_url + '/api/plugins/telemetry/{}/{}/values/timeseries'.format(self.entityType,self.id)
 		try:
 			response = self.session.get(url_path, params = {'keys':keys})
+			print response.json()
 			return response.json()[keys][0]['value']
 		except:
 			pass
@@ -63,11 +85,19 @@ class DEVICE(object):
 		endT = str(int(time.mktime(dte.timetuple()))*1000)
 		interval = int((dte-dts).total_seconds()*1000)
 		limit = 100
-		try:
-			response = self.session.get(url_path, params = {'keys':keys,'startTs':startT,'endTs':endT,'interval':interval,'limit':limit,'agg':agg})
-			return response.json()[keys][0]['value']
-		except:
-			pass
+		if (agg == 'DIFF'):
+			try:
+				maxValue = self.session.get(url_path, params = {'keys':keys,'startTs':startT,'endTs':endT,'interval':interval,'limit':limit,'agg':'MAX'}).json()[keys][0]['value']
+				minValue = self.session.get(url_path, params = {'keys':keys,'startTs':startT,'endTs':endT,'interval':interval,'limit':limit,'agg':'MIN'}).json()[keys][0]['value']
+				return float(maxValue)-float(minValue)
+			except:
+				pass
+		else:
+			try:
+				response = self.session.get(url_path, params = {'keys':keys,'startTs':startT,'endTs':endT,'interval':interval,'limit':limit,'agg':agg})
+				return response.json()[keys][0]['value']
+			except:
+				pass
 
 	def postDataValues(self,data):
 		url_path = self.base_url + '/api/v1/{}/telemetry'.format(self.token)

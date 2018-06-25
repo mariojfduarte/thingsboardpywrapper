@@ -14,11 +14,10 @@
 import os
 import requests
 
-USERNAME = 'USER_NAME_HERE' 
-PASSWORD = 'PASSWORD_HERE'
-BASE_URL = 'BASE_URL_HERE'
-#BASE_URL = 'https://demo.thingsboard.io'
- 
+USERNAME = 'INPUT HERE' 
+PASSWORD = 'INPUT HERE' 
+BASE_URL = 'INPUT HERE' 
+
 headers = {'Content-Type': 'application/json','Accept': 'application/json'}
 data = '{"username":"'+ USERNAME + '", "password":"' + PASSWORD + '"}'
 tokenDict = requests.post(BASE_URL+'/api/auth/login', headers=headers, data=data).json()
@@ -58,14 +57,39 @@ def startAllDevices():
 	print 'Finished mapping devices.'
 	return deviceInstanceList
 
-def searchDataValueForKey(deviceList, key):
+def searchDataValueForKey(deviceList,name, key):
 	for i in deviceList:
-		for ii in i.dataKeys:
-			if (ii == key):
-				return i.getDataValue(ii)
+		if (name == i.name):
+			for ii in i.dataKeys:
+				if (ii == key):
+					return i.getDataValue(ii)
+		else:
+			pass
 
-def searchDataIntervalForKey(deviceList, key, fromDateTime,toDateTime,agg):
+
+def searchDataValueForAttribute(deviceList,name, key):
 	for i in deviceList:
-		for ii in i.dataKeys:
-			if (ii == key):
-				return i.getDataValuesInterval(ii,fromDateTime,toDateTime,agg)
+		if (name == i.name):
+			for ii in i.attributes:
+				if (ii == key):
+					return i.getAttributeValue(ii)
+		else:
+			pass
+
+def searchDataIntervalForKey(deviceList,name, key, fromDateTime,toDateTime,agg):
+	for i in deviceList:
+		if (name == i.name):
+			for ii in i.dataKeys:
+				if (ii == key):
+					return i.getDataValuesInterval(ii,fromDateTime,toDateTime,agg)
+		else:
+			pass
+
+def getDeviceIndex(deviceList, deviceName):
+	index = 0
+	for i in deviceList:
+		if (i.name == deviceName):
+			return index
+		else:
+			index += 1
+			pass
