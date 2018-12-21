@@ -1,6 +1,5 @@
 
 # ThingsBoard Python Wrapper
-## by: Mario Gamas
 
 A simple python wrapper for ThingsBoard IoT Platform Telemetry API
 
