@@ -13,10 +13,11 @@
 
 import os
 import requests
+import config
 
-USERNAME = 'INPUT HERE' 
-PASSWORD = 'INPUT HERE' 
-BASE_URL = 'INPUT HERE' 
+USERNAME = config['USERNAME'] 
+BASE_URL = config['BASE_URL'] 
+PASSWORD = config['PASSWORD'] 
 
 headers = {'Content-Type': 'application/json','Accept': 'application/json'}
 data = '{"username":"'+ USERNAME + '", "password":"' + PASSWORD + '"}'
