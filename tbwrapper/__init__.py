@@ -15,10 +15,6 @@ import os
 import requests
 import config
 
-USERNAME = config['USERNAME'] 
-BASE_URL = config['BASE_URL'] 
-PASSWORD = config['PASSWORD'] 
-
 headers = {'Content-Type': 'application/json','Accept': 'application/json'}
 data = '{"username":"'+ USERNAME + '", "password":"' + PASSWORD + '"}'
 tokenDict = requests.post(BASE_URL+'/api/auth/login', headers=headers, data=data).json()
