@@ -13,7 +13,11 @@
 
 import os
 import requests
-import config
+from config import Config
+
+BASE_URL = Config.BASE_URL
+USERNAME = Config.USERNAME
+PASSWORD = Config.PASSWORD
 
 headers = {'Content-Type': 'application/json','Accept': 'application/json'}
 data = '{"username":"'+ USERNAME + '", "password":"' + PASSWORD + '"}'
