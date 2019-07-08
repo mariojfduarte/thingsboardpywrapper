@@ -1,5 +1,5 @@
 # Import libraries 				   
-from thingsboardwrapper import *
+from tbwrapper import *
 
 import json
 import time
