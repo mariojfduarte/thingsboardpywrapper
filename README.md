@@ -1,6 +1,5 @@
 
 # ThingsBoard Python Wrapper
-# by: Mario Gamas @ ISQ
 
 A simple python wrapper for ThingsBoard IoT Platform Telemetry API
 
@@ -17,7 +16,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Installing
 
-To start using thingsboardpywrapper we need to first configure our credentials. Open __init__.py file and replace the following strings with yours:
+To start using tbpywrapper we need to first creat an .env file for our credentials. Open ..env file with an text editor and replace the following strings with yours:
 
 ```
 USERNAME = 'YOUR_USER_NAME' 
@@ -28,7 +27,7 @@ BASE_URL = 'https://demo.thingsboard.io #for example
 And then import thingsboard module to wherever you want to use it:
 
 ```
-from thingsboard import *
+from tbpywrapper import *
 ```
 
 Now we are ready to get the data from the Devices.

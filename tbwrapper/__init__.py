@@ -13,15 +13,11 @@
 
 import os
 import requests
+from config import Config
 
-#BASE_URL = 'https://demo.thingsboard.io'
-BASE_URL = "https://www.eclipse-iot.com"
-#GLN
-#USERNAME = 'maestri@ismb.it'
-#PASSWORD = 'maestri'
-#MCG
-USERNAME = 'mariojfonseca.duarte@gmail.com'
-PASSWORD = 'tenant'
+BASE_URL = Config.BASE_URL
+USERNAME = Config.USERNAME
+PASSWORD = Config.PASSWORD
 
 headers = {'Content-Type': 'application/json','Accept': 'application/json'}
 data = '{"username":"'+ USERNAME + '", "password":"' + PASSWORD + '"}'

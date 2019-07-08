@@ -1,8 +1,7 @@
 # Import libraries 				   
-from thingsboardwrapper import *
 
+from tbwrapper import *
 import json
-import time
 import random
 
 ## Python Wrapper Tests  - Out of ThinksBoards.io Package Scope
