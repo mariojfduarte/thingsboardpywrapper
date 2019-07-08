@@ -3,6 +3,7 @@
 from tbwrapper import *
 import json
 import random
+import time
 
 ## Python Wrapper Tests  - Out of ThinksBoards.io Package Scope
 
