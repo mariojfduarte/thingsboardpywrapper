@@ -14,13 +14,21 @@
 import os
 import requests
 
-USERNAME = 'INPUT HERE' 
-PASSWORD = 'INPUT HERE' 
-BASE_URL = 'INPUT HERE' 
+#BASE_URL = 'https://demo.thingsboard.io'
+BASE_URL = "https://www.eclipse-iot.com"
+#GLN
+#USERNAME = 'maestri@ismb.it'
+#PASSWORD = 'maestri'
+#MCG
+USERNAME = 'mariojfonseca.duarte@gmail.com'
+PASSWORD = 'tenant'
 
 headers = {'Content-Type': 'application/json','Accept': 'application/json'}
 data = '{"username":"'+ USERNAME + '", "password":"' + PASSWORD + '"}'
 tokenDict = requests.post(BASE_URL+'/api/auth/login', headers=headers, data=data).json()
+
+print tokenDict
+
 TBAPI_TOKEN_KEY = tokenDict['token']
 
 class APIKeyMissingError(Exception):

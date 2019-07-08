@@ -59,19 +59,19 @@ for i in deviceList:														#
 #print searchDataValueForKey(deviceList, 'activePower')
 #time.sleep(2222)
 
-# deviceName  = 'TESTE'
+# deviceName  = 'TESTE'B
 # deviceIndex = getDeviceIndex(deviceList, deviceName)
 
 # print deviceIndex 
 
-# while True:
-#   	activePower =random.randint(5,10)
-#    	activeEnergy =random.randint(10,20)
-#   	data = json.dumps({'activePower':str(activePower), 'activeEnergy':str(activeEnergy)})
-#   	response =  deviceList[deviceIndex].postDataValues(data)
-#   	print deviceList[deviceIndex]
-# 	print searchDataValueForKey(deviceList,deviceName, 'activeEnergy')
-#   	time.sleep(5)
+while True:
+   	activePower =random.randint(5,10)
+   	activeEnergy =random.randint(10,20)
+   	data = json.dumps({'activePower':str(activePower), 'activeEnergy':str(activeEnergy)})
+   	response =  deviceList[0].postDataValues(data)
+  	print deviceList[0]
+ 	#print searchDataValueForKey(deviceList,deviceName, 'activeEnergy')
+  	time.sleep(5)
 #---------------------------------------------------------------------------#
 #############################################################################
 
